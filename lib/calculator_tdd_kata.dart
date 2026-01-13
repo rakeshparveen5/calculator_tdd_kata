@@ -6,8 +6,16 @@ class StringCalculator {
       return 0;
     }
 
-    final normalizedNumbers = numbers.replaceAll('\n', ',');
-    final parts = normalizedNumbers.split(',');
+    String delimiter = ',';
+    String numbersPart = numbers;
+    if (numbers.startsWith('//')) {
+      final newlineIndex = numbers.indexOf('\n');
+      delimiter = numbers.substring(2, newlineIndex);
+      numbersPart = numbers.substring(newlineIndex + 1);
+    }
+
+    final normalizedNumbers = numbersPart.replaceAll('\n', delimiter);
+    final parts = normalizedNumbers.split(delimiter);
     return parts.map(int.parse).reduce((a, b) => a + b);
   }
 }
