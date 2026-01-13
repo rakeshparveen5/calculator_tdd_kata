@@ -6,6 +6,7 @@ class StringCalculator {
       return 0;
     }
 
+    // Default delimiter is comma & rest for double slashes strings, it will identify with below if block
     String delimiter = ',';
     String numbersPart = numbers;
     if (numbers.startsWith('//')) {
