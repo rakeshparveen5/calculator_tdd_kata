@@ -17,6 +17,22 @@ class StringCalculator {
 
     final normalizedNumbers = numbersPart.replaceAll('\n', delimiter);
     final parts = normalizedNumbers.split(delimiter);
-    return parts.map(int.parse).reduce((a, b) => a + b);
+
+    final List<int> allNumbers = [];
+    final negativeNumbers = [];
+    for (int i = 0; i < parts.length; i++) {
+      final num = int.parse(parts[i]);
+      allNumbers.add(num);
+
+      if (num < 0) negativeNumbers.add(num);
+    }
+
+    if (negativeNumbers.isNotEmpty) {
+      throw Exception(
+        'negative numbers not allowed ${negativeNumbers.join(',')}',
+      );
+    }
+
+    return allNumbers.reduce((a, b) => a + b);
   }
 }
