@@ -26,13 +26,6 @@ class StringCalculator {
       );
     }
 
-    int maxNumberAllowed = 1000;
-    for (int i = 0; i < allNumbers.length; i++) {
-      if (allNumbers[i] > maxNumberAllowed) {
-        allNumbers.removeAt(i);
-      }
-    }
-
-    return allNumbers.reduce((a, b) => a + b);
+    return allNumbers.where((e) => e <= 1000).reduce((a, b) => a + b);
   }
 }
