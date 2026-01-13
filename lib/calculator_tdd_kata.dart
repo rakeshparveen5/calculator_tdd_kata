@@ -5,6 +5,12 @@ class StringCalculator {
     if (numbers.isEmpty) {
       return 0;
     }
-    return int.parse(numbers);
+
+    final parts = numbers.split(',');
+    var result = 0;
+    for (int i = 0; i < parts.length; i++) {
+      result += int.parse(parts[i]);
+    }
+    return result;
   }
 }
