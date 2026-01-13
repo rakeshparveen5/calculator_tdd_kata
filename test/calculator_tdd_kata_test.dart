@@ -16,4 +16,9 @@ void main() {
     StringCalculator calculator = StringCalculator();
     expect(calculator.add('1,5'), equals(6));
   });
+
+  test('returns sum of multiple numbers', () {
+    StringCalculator calculator = StringCalculator();
+    expect(calculator.add('1,2,3,4'), 10);
+  });
 }
