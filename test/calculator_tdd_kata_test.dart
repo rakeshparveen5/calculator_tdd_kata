@@ -31,4 +31,9 @@ void main() {
     StringCalculator calculator = StringCalculator();
     expect(calculator.add('//;\n1;2'), equals(3));
   });
+
+  test('throws exception for negative number', () {
+    StringCalculator calculator = StringCalculator();
+    expect(() => calculator.add('1,2,3,-4,5'), throwsA(isA<Exception>()));
+  });
 }
