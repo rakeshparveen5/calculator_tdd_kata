@@ -39,4 +39,12 @@ void main() {
       throwsA(predicate((e) => e is Exception && e.toString().contains('-4'))),
     );
   });
+
+  test('throws exception multiple negative numbers', () {
+    StringCalculator calculator = StringCalculator();
+    expect(
+      () => calculator.add('1,-2,3,-4,5,-6'),
+      throwsA(predicate((e) => e.toString().contains('-2,-4,-6'))),
+    );
+  });
 }
