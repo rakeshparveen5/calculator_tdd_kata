@@ -12,11 +12,10 @@ class StringCalculator {
     if (numbers.startsWith('//')) {
       final newlineIndex = numbers.indexOf('\n');
       final delimiterParts = numbers.substring(2, newlineIndex);
-      if (delimiterParts.startsWith('[') && delimiterParts.endsWith(']')) {
-        delimiter = delimiterParts.substring(1, delimiterParts.length - 1);
-      } else {
-        delimiter = delimiterParts;
-      }
+      delimiter =
+          (delimiterParts.startsWith('[') && delimiterParts.endsWith(']'))
+          ? delimiterParts.substring(1, delimiterParts.length - 1)
+          : delimiterParts;
       numbersPart = numbers.substring(newlineIndex + 1);
     }
 
