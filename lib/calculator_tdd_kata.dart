@@ -18,15 +18,8 @@ class StringCalculator {
     final normalizedNumbers = numbersPart.replaceAll('\n', delimiter);
     final parts = normalizedNumbers.split(delimiter);
 
-    final List<int> allNumbers = [];
-    final negativeNumbers = [];
-    for (int i = 0; i < parts.length; i++) {
-      final num = int.parse(parts[i]);
-      allNumbers.add(num);
-
-      if (num < 0) negativeNumbers.add(num);
-    }
-
+    final List<int> allNumbers = parts.map(int.parse).toList();
+    final negativeNumbers = allNumbers.where((e) => e.isNegative).toList();
     if (negativeNumbers.isNotEmpty) {
       throw Exception(
         'negative numbers not allowed ${negativeNumbers.join(',')}',

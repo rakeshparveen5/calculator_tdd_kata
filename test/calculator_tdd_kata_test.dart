@@ -34,6 +34,9 @@ void main() {
 
   test('throws exception for negative number', () {
     StringCalculator calculator = StringCalculator();
-    expect(() => calculator.add('1,2,3,-4,5'), throwsA(isA<Exception>()));
+    expect(
+      () => calculator.add('1,2,3,-4,5'),
+      throwsA(predicate((e) => e is Exception && e.toString().contains('-4'))),
+    );
   });
 }
