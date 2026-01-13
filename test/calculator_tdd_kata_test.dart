@@ -52,4 +52,12 @@ void main() {
     StringCalculator calculator = StringCalculator();
     expect(calculator.add('2,1001'), 2);
   });
+
+  test(
+    'test numbers having multi-character delimiter brackets, *** with prefix //',
+    () {
+      StringCalculator calculator = StringCalculator();
+      expect(calculator.add('//[***]\n1***2***3'), 6);
+    },
+  );
 }
