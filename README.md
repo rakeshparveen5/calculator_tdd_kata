@@ -74,7 +74,7 @@ All 12 tests passed!
 ```
 
 ## Screenshots
-![screenshot](imageFolder/screenshot.png)
+![screenshot](screenshots/Screenshot-Tests-Passed.png)
 
 ---
 
