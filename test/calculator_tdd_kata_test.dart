@@ -47,4 +47,9 @@ void main() {
       throwsA(predicate((e) => e.toString().contains('-2,-4,-6'))),
     );
   });
+
+  test('test ignore numbers greater then 1000', () {
+    StringCalculator calculator = StringCalculator();
+    expect(calculator.add('2,1001'), 2);
+  });
 }
