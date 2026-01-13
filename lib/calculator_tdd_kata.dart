@@ -7,20 +7,23 @@ class StringCalculator {
     }
 
     // Default delimiter is comma & rest for double slashes strings, it will identify with below if block
-    String delimiter = ',';
+    List<String> delimiters = [','];
     String numbersPart = numbers;
     if (numbers.startsWith('//')) {
       final newlineIndex = numbers.indexOf('\n');
       final delimiterParts = numbers.substring(2, newlineIndex);
-      delimiter =
-          (delimiterParts.startsWith('[') && delimiterParts.endsWith(']'))
-          ? delimiterParts.substring(1, delimiterParts.length - 1)
-          : delimiterParts;
+      final regex = RegExp(r'\[([^\]]+)\]');
+      delimiters = delimiterParts.startsWith('[')
+          ? regex.allMatches(delimiterParts).map((m) => m.group(1)!).toList()
+          : [delimiterParts];
       numbersPart = numbers.substring(newlineIndex + 1);
     }
 
-    final normalizedNumbers = numbersPart.replaceAll('\n', delimiter);
-    final parts = normalizedNumbers.split(delimiter);
+    String normalizedNumbers = numbersPart.replaceAll('\n', delimiters.first);
+    for (var d in delimiters.skip(1)) {
+      normalizedNumbers = normalizedNumbers.replaceAll(d, delimiters.first);
+    }
+    final parts = normalizedNumbers.split(delimiters.first);
 
     final List<int> allNumbers = parts.map(int.parse).toList();
     final negativeNumbers = allNumbers.where((e) => e.isNegative).toList();
