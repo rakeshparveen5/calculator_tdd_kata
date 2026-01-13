@@ -84,7 +84,7 @@ All 12 tests passed!
 - Dart SDK installed
 
 ### Installation
-Install dependencies: `flutter pub get`
+Install dependencies: `dart pub get`
 
 # Run tests
-flutter test
+dart test
