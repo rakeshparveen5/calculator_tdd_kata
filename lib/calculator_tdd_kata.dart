@@ -7,10 +7,6 @@ class StringCalculator {
     }
 
     final parts = numbers.split(',');
-    var result = 0;
-    for (int i = 0; i < parts.length; i++) {
-      result += int.parse(parts[i]);
-    }
-    return result;
+    return parts.map(int.parse).reduce((a, b) => a + b);
   }
 }
