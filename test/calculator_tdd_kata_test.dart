@@ -65,4 +65,9 @@ void main() {
     StringCalculator calculator = StringCalculator();
     expect(calculator.add('//[*][%]\n1*2%3'), 6);
   });
+
+  test('test numbers with multiple delimiters in groups', () {
+    StringCalculator calculator = StringCalculator();
+    expect(calculator.add('//[**][%%]\n1**2%%3'), 6);
+  });
 }
